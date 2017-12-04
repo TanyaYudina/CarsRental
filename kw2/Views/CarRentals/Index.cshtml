@@ -1,0 +1,84 @@
+﻿@model IEnumerable<kw2.Models.CarRental>
+
+@{
+    ViewData["Title"] = "Прокат автомобилей";
+}
+
+<h2>Прокат автомобилей</h2>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Дата выдачи
+                </th>
+                <th>
+                    Срок проката
+                </th>
+                <th>
+                    Дата возврата 
+                </th>
+                <th>
+                    Цена проката
+                </th>
+                <th>
+                    Отметка об оплате
+                </th>
+            <th>
+                Доп Услуги
+            </th>
+            <th>
+               Номер автомобиля
+            </th>
+            <th>
+                Клиент
+            </th>
+            <th>
+                Сотрудник
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfIssue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalPeriod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceRental)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentNote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalService.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car.CarNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RentId">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.RentId">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.RentId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>

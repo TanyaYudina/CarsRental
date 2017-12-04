@@ -1,0 +1,62 @@
+﻿@model kw2.Models.Car
+
+@{
+    ViewData["Title"] = "Создать";
+}
+
+<h2>Создать</h2>
+
+<h4>Автомобили</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                Марка
+                <select asp-for="ModelId" class ="form-control" asp-items="ViewBag.ModelId"></select>
+            </div>
+            <div class="form-group">
+                Регистрационный номер
+                <input asp-for="RegistrationNumber" class="form-control" />
+                <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Номер кузова
+                <input asp-for="CarNumber" class="form-control" />
+                <span asp-validation-for="CarNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Номер двигателя
+                <input asp-for="EngineNumber" class="form-control" />
+                <span asp-validation-for="EngineNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Год выпуска
+                <input asp-for="DateOfIssue" class="form-control" />
+                <span asp-validation-for="DateOfIssue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Пробег
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Цена автомобиля
+                <input asp-for="DayRentalCar" class="form-control" />
+                <span asp-validation-for="DayRentalCar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

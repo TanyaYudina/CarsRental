@@ -1,0 +1,72 @@
+﻿@model kw2.Models.CarRental
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CarRental</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfIssue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfIssue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalPeriod)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RentalPeriod)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceRental)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PriceRental)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentNote)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaymentNote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalService)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalService.ServiceId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Car)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Car.CarId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.CustomerId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Employee.EmployeeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RentId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<kw2.Models.Model>
+@using kw2.Models
+@{
+    ViewData["Title"] = "Модели";
+}
+
+<h2>Модели</h2>
+
+<div class="container">
+    <form method="get" role="form" class="form-horizontal">
+        <div class="form-group">
+            <input type="text" name="modelFilter">
+            <input type="submit" value="Отфильтровать" class="btn btn-default" />
+        </div>
+    </form>
+</div>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Марка
+                </th>
+                <th>
+                    Спецификация
+                </th>
+                <th>
+                   Описание
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ModelId">Редактирование</a> |
+                <a asp-action="Details" asp-route-id="@item.ModelId">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.ModelId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+</p>

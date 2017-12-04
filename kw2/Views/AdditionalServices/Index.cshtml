@@ -1,0 +1,48 @@
+﻿@model IEnumerable<kw2.Models.AdditionalService>
+
+@{
+    ViewData["Title"] = "Доп. Услуги";
+}
+
+<h2>Доп. Услуги</h2>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Описание
+                </th>
+                <th>
+                    Цена
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ServiceId">Редактирование</a> |
+                <a asp-action="Details" asp-route-id="@item.ServiceId">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.ServiceId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>

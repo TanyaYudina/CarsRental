@@ -1,0 +1,72 @@
+﻿@model IEnumerable<kw2.Models.Car>
+
+@{
+    ViewData["Title"] = "Автомобили";
+}
+
+<h2>Автомобили</h2>
+
+<p>
+    <a asp-action="Create">Добавить</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Регистрационный номер
+                </th>
+                <th>
+                    Номер кузова
+                </th>
+                <th>
+                    Номер двигателя
+                </th>
+                <th>
+                   Год выпуска
+                </th>
+                <th>
+                    Пробег
+                </th>
+                <th>
+                    Цена автомобиля
+                </th>
+            <th>
+                Марка
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EngineNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfIssue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DayRentalCar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CarId">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.CarId">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.CarId">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<page-link page-model="Model.PageViewModel" page-action="Index"></page-link>
